@@ -6,12 +6,12 @@ public class PlayerController : MonoBehaviour
 {
 
     public float moveSpeed;
+    private Rigidbody2D rbPlayer;
     private Vector2 moveInput;
-
 
     void Start()
     {
-        
+        rbPlayer = this.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
-        transform.position += new Vector3(moveInput.x * Time.deltaTime * moveSpeed, moveInput.y * Time.deltaTime * moveSpeed, 0f);
+        moveInput.Normalize();
+
+        rbPlayer.velocity = moveInput * moveSpeed;
     }
 }
