@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     private Rigidbody2D rbPlayer;
     private Vector2 moveInput;
+    public static PlayerController instance;
 
     void Start()
     {
